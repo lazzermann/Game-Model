@@ -57,7 +57,7 @@ namespace GameModel
         }
 
         bool isCriticalHealthState() {
-            double res = ((maxHealth / 100) *30);
+            double res = ((Convert.ToDouble(maxHealth) / 100) *30);
             if (res >= CurrentHealth)
                 return true;
 
