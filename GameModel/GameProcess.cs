@@ -5,6 +5,12 @@ namespace GameModel
 {
     class GameProcess
     {
+        //Action constants to avoid the appearance of magic numbers
+        const int punchAction = 1;
+        const int forcePunchAction = 2;
+        const int healAction = 3;
+
+
         Player player;
         Player computer;
 
@@ -13,29 +19,39 @@ namespace GameModel
             this.computer = new Player("Computer", hpCount);
         }
 
+        public GameProcess(Player player, Player computer) {
+            this.player = player;
+            this.computer = computer;
+        }
+
+        //Default constructor
         public GameProcess() {
             player = new Player("Player", 100);
             computer = new Player("Computer", 100);
         }
 
+        //Game loop
        public void Game() {
-            Random turnRandomizer = new Random();
+            Random turnRandomizer = new Random(); //
 
             do
             {
                 switch (turnRandomizer.Next(1,3)) {
 
                     case 1:
-                        switch (player.chooseAction()) {
-                            case 1:
+                        switch (player.chooseAction()) { //Turn of the player
+                           
+                            case punchAction:
                                 computer.getDamage(player.Punch());
                                 showResultOfTurn(player.getName()+" kick the "+computer.getName()+" with punch");
                                 break;
-                            case 2:
+
+                            case forcePunchAction:
                                 computer.getDamage(player.forcePunch());
                                 showResultOfTurn(player.getName() + " kick the " + computer.getName() + " with force punch");
                                 break;
-                            case 3:
+
+                            case healAction:
                                 player.Heal();
                                 showResultOfTurn(player.getName() + " heal himself");
                                 break;
@@ -43,17 +59,20 @@ namespace GameModel
                         break;
 
                     case 2:
-                        switch (computer.chooseAction())
+                        switch (computer.chooseAction()) //Turn of the computer
                         {
-                            case 1:
+
+                            case punchAction:
                                 player.getDamage(computer.Punch());
                                 showResultOfTurn(computer.getName() + " kick the " + player.getName() + " with punch");
                                 break;
-                            case 2:
+
+                            case forcePunchAction:
                                 player.getDamage(computer.forcePunch());
                                 showResultOfTurn(computer.getName() + " kick the " + player.getName() + " with force punch");
                                 break;
-                            case 3:
+
+                            case healAction:
                                 computer.Heal();
                                 showResultOfTurn(computer.getName() + " heal himself");
                                 break;
@@ -62,8 +81,8 @@ namespace GameModel
 
                 };
 
-                Console.Beep();
-                Thread.Sleep(500);
+                Console.Beep(); //Sound signal
+                Thread.Sleep(500); //Delay between result outputs on half of second
 
             } while (player.getHealth() > 0 && computer.getHealth() > 0);
             
@@ -74,6 +93,7 @@ namespace GameModel
                 showGameResult(player);
         }
 
+        //Show what happens at each turn
         void showResultOfTurn(String message) {
             Console.WriteLine(message);
             Console.WriteLine(player.getName()+" HP"+" : " + player.getHealth());
@@ -81,6 +101,7 @@ namespace GameModel
             Console.WriteLine();
         }
 
+        //Show winner
         void showGameResult(Player winner) {      
                 Console.WriteLine(winner.getName() + " Win !!!");
                 Console.WriteLine("Remaining Hp : " + winner.getHealth());
