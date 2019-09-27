@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace GameModel
 {
-    class GameProcess
+    class GameModulation
     {
         //Action constants to avoid the appearance of magic numbers
         const int punchAction = 1;
@@ -14,25 +14,25 @@ namespace GameModel
         Player player;
         Player computer;
 
-       public GameProcess(String name, int hpCount) {
+       public GameModulation(String name, int hpCount) {
             this.player = new Player(name, hpCount);
             this.computer = new Player("Computer", hpCount);
         }
 
-        public GameProcess(Player player, Player computer) {
+        public GameModulation(Player player, Player computer) {
             this.player = player;
             this.computer = computer;
         }
 
         //Default constructor
-        public GameProcess() {
+        public GameModulation() {
             player = new Player("Player", 100);
             computer = new Player("Computer", 100);
         }
 
         //Game loop
-       public void Game() {
-            Random turnRandomizer = new Random(); //
+       public void startGame() {
+            Random turnRandomizer = new Random(); //Random of computer and player turns
 
             do
             {
