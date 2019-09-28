@@ -86,10 +86,10 @@ namespace GameModel
 
             } while (player.getHealth() > 0 && computer.getHealth() > 0);
             
-            if(player.getHealth() < 0)
+            if(player.getHealth() <= 0)
             showGameResult(computer);
 
-            if (computer.getHealth() < 0)
+            if (computer.getHealth() <= 0)
                 showGameResult(player);
         }
 
