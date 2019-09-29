@@ -12,7 +12,7 @@ namespace GameModel
         {
             startGameInterface interFace = new startGameInterface();
 
-            interFace.startGameIntro();
+            interFace.startGame();
         }
     }
 }

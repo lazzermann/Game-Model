@@ -9,6 +9,7 @@ namespace GameModel
 {
     class startGameInterface
     {
+        //Action constants to avoid the appearance of magic numbers
         const int customSetPlayerOptionsAction = 1;
         const int defaultSetPlayerOptionsAction = 2;
         const int exitAction = 0;
@@ -18,14 +19,15 @@ namespace GameModel
         public startGameInterface() { }
 
         
-        public void startGameIntro()
+        public void startGame()
         {
             int chooser = 0;
 
+            //Menu
             Console.WriteLine("Welcome to game model simulation");
             Console.WriteLine("Input  1 - to choose your player name and count of HP");
             Console.WriteLine("2 - to choose default player name and 100 HP");
-            Console.WriteLine("0 - to exit");
+            Console.WriteLine("0 - to exit from programm");
 
             try
             {
@@ -60,6 +62,7 @@ namespace GameModel
                     setPlayers(defaultSetPlayerOptionsAction);
                     break;
             }
+            //Start game loop
             game.startGame();
         }
        
