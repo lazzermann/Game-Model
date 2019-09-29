@@ -45,12 +45,12 @@ namespace GameModel
             {
                 case customSetPlayerOptionsAction:
 
-                    setPlayers(customSetPlayerOptionsAction);
+                    setPlayers(customSetPlayerOptionsAction); //Custom player options
                     break;
 
                 case defaultSetPlayerOptionsAction:
 
-                    setPlayers(defaultSetPlayerOptionsAction);
+                    setPlayers(defaultSetPlayerOptionsAction);//Default player options
                     break;
 
                 case exitAction:
